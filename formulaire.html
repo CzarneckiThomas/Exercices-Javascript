@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="exo1204.css" />
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- Exo 2 : --formulaire d’inscription + début validation--
+    .Créer une classe User, avec comme parametres firstname, lastname, address ( fname = prénom , lname = nom)
+    .Formulaire contenant LES champS nom , prénom, addresse , ces champs sont obligatoires
+    .stocker ces données dans une nouvelle instance d’objet
+    .passer toutes les valeurs en minuscule , exemple prénom KéViN deviendra kévin
+    .un petit peu de css pour le message de confirmation -->
+
+
+    <form action="#">
+        <p>
+          <input id="firstname" type="text" placeholder="Prénom" required>
+        </p>
+        <p>
+          <input id="lastname" type="text" placeholder="Nom" required>
+        </p>
+        <p>
+          <input id="adresse" type="text" placeholder="adresse" required>
+        </p>
+        <button onclick="validateUserInscription()">Valider</button>
+    </form>
+
+    <script>
+        class User {
+          constructor (firstname, lastname, adresse) {
+            this.firstname = firstname,
+            this.lastname = lastname,
+            this.adresse = adresse
+          }
+        }
+        
+        function validateUserInscription(){
+            let user1 = new User ( 
+                firstname.value.toLowerCase(),
+                lastname.value.toLowerCase(),
+                adresse.value.toLowerCase());
+                console.log(user1);
+        }
+    </script>
+
+
+
+
+
+</body>
+</html>

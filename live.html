@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="basic.css">
+ 
+    <title>HTML EXO JS</title>
+</head>
+ 
+<body>
+    <!-- brotip -->
+    <!-- https://www.w3schools.com/js/js_htmldom_document.asp -->
+ 
+    <!-- getElementById : méthode , récup l'élément actuel par son id, c'est comme un sélecteur css
+    innerHTML : propriété , récup le contenu , utile aussi pour remplacer-->
+ 
+    <!-- 1. afficher "BONJOUR MADAME LA MINISTRE" dans la balise ci-dessous, via le js -->
+    <p id="salut">Bonjour cher utilisateur.</p>
+    <script>
+          
+        let hello = "BONJOUR MADAME LA MINISTRE";
+        document.getElementById('salut').innerHTML = hello;
+    </script>
+ 
+
+    <!-- 2. remplacer le logo github par une photo de l'élysée  -->
+    <img id="imageTest" src="https://cdn.dribbble.com/users/6569/screenshots/15810900/media/ba31ac56fc193c29841f6e4578f797b3.png?compress=1&resize=400x300&vertical=top"></img>
+    <script>
+         document.getElementById("imageTest").src="images/elysee.jpg";
+
+    </script>
+ 
+    <!-- 3. afficher une window popup demandant de se log à l'affichage de la page , brotip: utiliser window.prompt()
+    si l'utilisateur se login correctement, afficher une popup d'alert confirmant le succès du login
+    ex : 'ADMIN'
+    -->
+    <!-- vous vous rendez compte de la priorité d'appel des scripts -->
+    <script>
+
+      let promptLogin = window.prompt("Nom d'utilisateur");
+      if (promptLogin === "ADMIN"){
+         window.alert("SUCCES !");
+      }
+           
+
+    </script>
+ 
+ 
+    <!-- 4. a l'aide de l'event onclick a RAJOUTER sur la balise h1,
+     ajouter un appel de fonction pour changer le texte par un lien -->
+    <h1 onclick="changeText(this)">Clickez moi pour commander un café.</h1>
+    <script>
+
+    function changeText(baliseCible){
+        baliseCible.innerHTML = "http://google.com";
+    }
+
+    </script>
+ 
+
+    <!-- 5. créer un boutton qui va afficher la date dans le dom -->
+    <button id="dateButton">Afficher l'heure</button>
+    <p id="dateDisplay"></p>
+    <script>
+         document.getElementById('dateButton').onclick = displayDate;
+
+
+         // Affiche la date le dateDisplay
+         function displayDate(){
+            document.getElementById('dateDisplay').innerHTML = Date();
+        }
+
+    </script>
+
+
+
+    <!-- 6. changer le contenu html de la div au survol,
+         ...ahem... au mouseover en anglais -->
+    <div>Survolez moi</div>
+    <div onmouseover="myMouseover(this)" 
+         onmouseout="myMouseout(this)"> Survolez moi</div>
+<script>
+
+
+   function myMouseover(divQuonPasse){
+          divQuonPasse.innerHTML = "myMouseover appellé"
+   }
+
+// possible d'améliorer avec les méthodes adéquates du DOM
+
+    function myMouseout(divQuonPasse){
+         divQuonPasse.innerHTML = "myMouseout appellé"
+}
+
+
+ </script>
+ 
+
+ 
+    <!-- 7. changer la couleur de fond de la balise avec l'id alarme
+        lors du click sur le bouton lancer l'alarme et changer son texte par "alarme lancée" -->
+    <p id="alarme">Devons nous lancer l'alarme</p>
+    <script>
+
+       document.getElementById('alarme').onclick = activateAlarm;
+
+       function activateAlarm(){
+       document.getElementById('alarme').style.backgroundColor = "Red";
+       document.getElementById('alarme').innerHTML = "alarme lancée"
+       
+       }
+
+    </script>
+ 
+    <!-- 8 : afficher la <p> cachée au survol de la balise avec id changeStyleMouseover -->
+    <p id="changeStyleMouseover">Afficher la div cachée</p>
+    <p id="displayOnMouseover" style="visibility:hidden">cachée</p>
+    <script>
+
+        document.getElementById("changeStyleMouseover").onmouseover = showHiddenElement;
+
+
+        function showHiddenElement() {
+        document.getElementById("displayOnMouseover").style.visibility = "visible";
+ }
+
+
+
+
+    </script>
+ 
+    <!-- SIGMA GRINDSET BONUS : rajouter un texte via javascript à la suite de para2-->
+    <div id="new">
+        <p id="para1">hey</p>
+        <p id="para2">heyheyhey</p>
+    </div>
+
+    <script>
+
+       var tag = document.createElement("p"); 
+       var text = document.createTexteNode("texte contenu");
+       tag.appendChild(text);
+       var element = document.getElementById("new");
+       element.appendChild(tag);
+
+    </script>
+ 
+    
+</body>
+ 
+</html>

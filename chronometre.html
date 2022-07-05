@@ -1,0 +1,33 @@
+
+
+<!-- creer un chronometre en algo -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+<body>
+    <div id="minutes"></div>
+    <div id="seconds"></div>
+    <button onclick="setInterval(  startCount , 1000)">test</button>
+    <script>
+        let seconds = 0;
+        let minutes = -1;
+
+        function startCount(){
+            if( seconds % 60 === 0 ){
+                seconds = 0;
+                minutes++;
+            }
+
+            document.getElementById('seconds').innerHTML = seconds;
+            document.getElementById('minutes').innerHTML = minutes;
+            seconds ++;
+        }
+    </script>
+</body>
+</html>

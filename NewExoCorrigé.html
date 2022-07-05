@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- GIGACHAD BONUS : afficher les utilisateurs d'un tableau dans l'html
+<div id="displayUsers"></div>
+<script>
+    let tabUsers = ['Manuel', 'Jean-Luc', 'Eric'];
+    var temp;
+
+   for(let i = 0 ; i < tabUsers.length ; i++){
+         temp = document.createElement("div");
+         temp.className = "user";
+         temp.innerHTML = tabUsers[i];
+         document.getElementById("displayUsers").appendChild(temp)
+   }
+</script> -->
+
+
+
+
+
+
+
+    <!-- classe User avec les propriétés
+        1.age -> Number , type -> userType , username->String , strength -> number
+        2.instancier 5 users différents
+        3.sélectionner deux utilisateurs au hasard, 
+        4.afficher leur nom dans une nouvelle div et un boutton lancant un combat entre les deux utilisateurs
+        les faire s'affronter dans un match a mort ! le plus FORT ( strength en anglais) gagne et voit son nom affiché dans une popup d'alerte ( ...ahem... alert() )
+        un utilisateur PREMIUM gagnera toujours, sauf s'il affronte un autre utilisateur premium dans ce cas le plus fort des deux gagne.
+    -->
+    <button onclick="startMatch()">BAGARRE</button>
+        <script>
+            const userType = ['NORMAL', 'PREMIUM'];
+        
+            //1
+            class User {
+                constructor(age,type,username, strength){
+                    this.age = age;
+                    this.type = type ;
+                    this.username = username;
+                    this.strength = strength;
+                }
+            }
+        
+            //2 db """"""simulator"""""""
+            let fighters = [
+                        new User(12, userType[0], 'kevin', 2),
+                        new User(50, userType[0], 'shaquille o\'neal', 2),
+                        new User(34, userType[1], 'mr le ministre', 1),
+                        new User(66, userType[1], 'toto', 20),
+                        new User(50, userType[0], 'booba', 40)
+                    ]
+        
+            //3 picks a random number depending on fighter db 
+            
+        
+            function startMatch(){
+                let randomFighterPick =  Math.floor(Math.random() * fighters.length);
+        
+                let fighter1 = fighters[randomFighterPick];
+                let fighter2 = fighter1;
+        
+                while (fighter1 === fighter2 ){
+                    randomFighterPick = Math.floor(Math.random() * fighters.length);
+                    fighter2 = fighters[randomFighterPick];
+                }
+        
+                if(startFight(fighter1,fighter2)=== undefined){
+                    alert("match nul");
+                }
+                else{
+                    alert(startFight(fighter1,fighter2).username);
+                }
+            }
+        
+            // returns the strongest fighter
+            function startFight(fighterA, fighterB){
+                //partie tromperie
+                if(fighterA.type != fighterB.type){
+                    //truquage ici
+                    if(fighterA.type === userType[1]){
+                        return fighterA;
+                    }
+                    else{
+                        return fighterB;
+                    }
+                }
+                //partie combat
+                else{
+                    if(fighterA.strength > fighterB.strength){
+                        return fighterA;
+                    } 
+                    else if(fighterA.strength < fighterB.strength){
+                        return fighterB;
+                    }
+                    else{
+                        return;
+                    }
+                }
+                
+            }
+        
+        
+        
+        
+        
+        </script>
+</body>
+</html>

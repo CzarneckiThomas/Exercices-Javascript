@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    var temps;
+ 
+    function timer() {
+        temps = setInterval(afficheTimer, 1000);
+    }
+     
+    /**
+     * Affiche le chrono
+     */
+     
+    var secondes = 20;
+     
+    function afficheTimer() {
+        /* Notre chronomètre démarre à 20 secondes */
+        if (secondes > 0) {
+            document.getElementById("chrono").innerHTML = "Temps restant : " + secondes + "<br />";
+            secondes--;
+        } else {
+            document.getElementById("chrono").innerHTML += "Ça y est c'est fini gros, t'as perdu " + "<br />";
+            stopChrono();
+        }
+    }
+     
+    /**
+     * Arrête le chrono
+     */
+    function stopChrono() {
+        clearInterval(temps);
+    }
+
+</script>
+
+
+
+
+</body>
+</html>
